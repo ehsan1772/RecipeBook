@@ -1,7 +1,7 @@
-
 package com.example.recipebook;
 
 import java.util.List;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,48 +9,35 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+public class RecipeViewAdapter  extends ArrayAdapter<Recipe> {
 
-/**
- * A basic view adapter that follows the veiwHolder pattern
- * @author Ehsan Barekati
- *
- */
-public class CategoryViewAdapter extends ArrayAdapter<String>{
+	List<Recipe> listRecipeView;
+	private Context context;
+	private Recipe recipe;
+	private TextView nameTextView;
+	private TextView timeTextView;
 	
-
-	List<String> listCategoryView;
-	Context context;
-	String category;
-	private TextView textView;
-	
-	public CategoryViewAdapter(Context context, int textViewResourceId,
-			List<String> objects) {
+	public RecipeViewAdapter(Context context, int textViewResourceId,
+			List<Recipe> objects) {
 		super(context, textViewResourceId, objects);
-		listCategoryView = objects;
+		listRecipeView = objects;
 		this.context = context;
 		// TODO Auto-generated constructor stub
 	}
 
-
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-
-		category = listCategoryView.get(position);
+		recipe = listRecipeView.get(position);
 		
 
 		LayoutInflater inflator = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		convertView = inflator.inflate(R.layout.category_view, parent, false);
 
-		textView = (TextView) convertView.findViewById(R.id.category_name);
+		nameTextView = (TextView) convertView.findViewById(R.id.category_name);
 
-		textView.setText(category);
+		nameTextView.setText(recipe.getName() + " (Takes : " + recipe.getMinutes() + " minutes)");
 	
 		return convertView;
-
-		
 	}
-
-
-
-
+	
 }

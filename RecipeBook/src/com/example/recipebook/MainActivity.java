@@ -5,10 +5,11 @@ import java.util.List;
 import android.os.Bundle;
 import android.app.Activity;
 import android.database.Cursor;
+import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.widget.ListView;
 
-public class MainActivity extends Activity implements MyDatabaseOwner, QueryListener{
+public class MainActivity extends FragmentActivity implements MyDatabaseOwner, QueryListener{
 
 	private MyDatabaseHelper myDatabaseHelper;
 	private MyCategoryListView categoryListView;
@@ -22,7 +23,7 @@ public class MainActivity extends Activity implements MyDatabaseOwner, QueryList
         
         setContentView(R.layout.activity_main);
         
-        categoryListView = (MyCategoryListView) findViewById(R.id.categorylistView);
+     //   categoryListView = (MyCategoryListView) findViewById(R.id.categorylistView);
 
     }
 
@@ -49,6 +50,11 @@ public class MainActivity extends Activity implements MyDatabaseOwner, QueryList
 
 	public void onFindCategoriesComplete(List<String> categories) {
 		
+		
+	}
+
+	public void onFindRecipesComplete(List<Recipe> recipes) {
+		// TODO Auto-generated method stub
 		
 	}
 }

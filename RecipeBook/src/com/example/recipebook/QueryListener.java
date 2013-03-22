@@ -11,9 +11,8 @@ import android.database.Cursor;
  *
  */
 public interface QueryListener {
-	
-//	void onSearchComplete(List<BriefResult> data);
-	void setCursor(Cursor cursor);
+
 	void onFindCategoriesComplete(List<String> categories);
+	void onFindRecipesComplete(List<Recipe> recipes);
 
 }

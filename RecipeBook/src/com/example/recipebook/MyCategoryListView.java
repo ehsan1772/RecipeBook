@@ -3,6 +3,7 @@ package com.example.recipebook;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.AdapterView;
@@ -54,8 +55,10 @@ public class MyCategoryListView extends ListView implements OnItemClickListener 
 	 }
 
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-		// TODO Auto-generated method stub
-		
+		String category = (String) theOwner.getClickedItem(arg2);
+		Intent intent = new Intent(context, RecipeListActivity.class);
+		intent.putExtra("Category", category);
+		context.startActivity(intent);
 	}
 
 

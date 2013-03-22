@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 /**
  * This class offers different methods to perform queries on the database
@@ -83,10 +84,28 @@ private String getCategoriesQuery(){
 			"FROM Categories;";
 	return query;
 }
+private String getRecipesQuery(String category){
+	String query = " SELECT * " +
+			"FROM Recipes " +
+			"WHERE category " +
+			"= " +
+			"(SELECT _id " +
+			"FROM Categories " +
+			"WHERE category " +
+			"= '" + category + "');";
+	return query;
+}
 public List<String> getCategories(SQLiteDatabase database){
 	String query = getCategoriesQuery();
+	Log.d("Query: ", query);
 	cursor = database.rawQuery(query, null);
 	return cursorToCategories(cursor);
+}
+public List<Recipe> getRecipies(String category, SQLiteDatabase database){
+	String query = getRecipesQuery(category);
+	Log.d("Query: ", query);
+	cursor = database.rawQuery(query, null);
+	return cursorToRecipeList(cursor);
 }
 //public List<BriefResult> searchByQuery(String searchPhrase, SQLiteDatabase database){
 //	listResult.clear();
@@ -113,6 +132,7 @@ private List<String> cursorToCategories(Cursor cursor){
 	{
 		String temp = new String();
 		temp = cursor.getString(0);
+		Log.d("Category : ", temp);
 		result.add(temp);
 	}while (cursor.moveToNext());
 	
@@ -124,28 +144,30 @@ private List<String> cursorToCategories(Cursor cursor){
  * @param cursor
  * @return A list of objects
  */
-//private List<BriefResult> cursorToList(Cursor cursor){
-//	
-//	if(cursor == null || cursor.getCount() == 0)
-//		return null;
-//	
-//	cursor.moveToFirst();
-//	List<BriefResult> result = new ArrayList<BriefResult>();
-//	
-//	do
-//	{
-//		BriefResult temp = new BriefResult();
-//		
-//		temp.setCity(cursor.getString(11));
-//		temp.setState(cursor.getString(12));
-//		temp.setZip(cursor.getString(1));
-//		temp.setRowPosition(cursor.getPosition());
-//		
-//		result.add(temp);
-//	}while (cursor.moveToNext());
-//	
-//	return result;
-//}
+private List<Recipe> cursorToRecipeList(Cursor cursor){
+	
+	if(cursor == null || cursor.getCount() == 0)
+		return null;
+	
+	cursor.moveToFirst();
+	List<Recipe> result = new ArrayList<Recipe>();
+	
+	do
+	{
+		Recipe temp = new Recipe();
+		
+		temp.setID(cursor.getString(0));
+		temp.setName(cursor.getString(1));
+		temp.setMinutes(cursor.getString(2));
+		temp.setCategory(cursor.getString(3));
+		temp.setIngredients(cursor.getString(4));
+		temp.setInstructions(cursor.getString(5));
+		
+		result.add(temp);
+	}while (cursor.moveToNext());
+	
+	return result;
+}
 
 
 }

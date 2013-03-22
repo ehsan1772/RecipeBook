@@ -13,7 +13,7 @@ import android.widget.ProgressBar;
  * @author Ehsan Barekati
  *
  */
-public class RunQuery extends AsyncTask<Void, ProgressBar, Object>{
+public class RunQuery extends AsyncTask<String, ProgressBar, Object>{
 	
 	public static SQLiteDatabase db;
 	private String query;
@@ -24,8 +24,8 @@ public class RunQuery extends AsyncTask<Void, ProgressBar, Object>{
 	
 	public RunQuery(DatabaseTask task, QueryListener listener)
 	{		
-		this.query = query;
-		this.db = db;
+	//	this.query = query;
+	//	this.db = db;
 		this.listener = listener;
 		this.task = task;
 		mySearchManager = new MyQueryManager();
@@ -34,11 +34,13 @@ public class RunQuery extends AsyncTask<Void, ProgressBar, Object>{
 	}
 
 	@Override
-	protected Object doInBackground(Void... params) {
+	protected Object doInBackground(String... params) {
 		
 		switch (task){
 		case FIND_CATEGORIES:
 			return mySearchManager.getCategories(db);
+		case FIND_RECIPES:
+			return mySearchManager.getRecipies(params[0], db);
 		}
 		return null;
 	}
@@ -50,6 +52,10 @@ public class RunQuery extends AsyncTask<Void, ProgressBar, Object>{
 		switch (task){
 		case FIND_CATEGORIES:
 			listener.onFindCategoriesComplete((List<String>) result);
+			break;
+		case FIND_RECIPES:
+			listener.onFindRecipesComplete((List<Recipe>) result);
+			break;
 		}
 		super.onPostExecute(result);
 	}

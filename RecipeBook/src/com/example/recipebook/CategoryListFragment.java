@@ -2,26 +2,30 @@ package com.example.recipebook;
 
 import java.util.List;
 
-import android.app.Fragment;
+//import android.app.Fragment;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 
-public class CategoryListFragment extends Fragment implements QueryListener{
+public class CategoryListFragment extends Fragment implements QueryListener, MyListViewOwner{
 
 	private MyCategoryListView listView;
 	private View root;
 	private RunQuery runQuery;
+	private List<String> categories;
 	private CategoryViewAdapter categoryViewAdapter;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		//return super.onCreateView(inflater, container, savedInstanceState);
-		 root = inflater.inflate(R.layout.category_view, container, false);
+		 root = inflater.inflate(R.layout.category_item_view, container, false);
 		 listView = (MyCategoryListView) root.findViewById(R.id.categorylistView);
+		 listView.setTheOwner(this);
 		 setCategories();
 		 
 		 return root;
@@ -36,9 +40,23 @@ public class CategoryListFragment extends Fragment implements QueryListener{
 		
 	}
 	public void onFindCategoriesComplete(List<String> categories) {
-		// TODO Auto-generated method stub
+		this.categories = categories;
 		categoryViewAdapter = new CategoryViewAdapter(getActivity(), R.layout.category_view, categories);
 		listView.setAdapter(categoryViewAdapter);
+	}
+
+	public Object getClickedItem(int position) {
+		return categories.get(position);
+	}
+
+	public void onFindRecipesComplete(List<Recipe> recipes) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Cursor getCursor() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
