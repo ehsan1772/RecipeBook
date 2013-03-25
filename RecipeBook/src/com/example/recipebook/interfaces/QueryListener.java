@@ -1,7 +1,9 @@
 
-package com.example.recipebook;
+package com.example.recipebook.interfaces;
 
 import java.util.List;
+
+import com.example.recipebook.Recipe;
 
 import android.database.Cursor;
 

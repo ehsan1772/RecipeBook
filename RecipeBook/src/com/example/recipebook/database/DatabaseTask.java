@@ -1,4 +1,4 @@
-package com.example.recipebook;
+package com.example.recipebook.database;
 
 public enum DatabaseTask {
 	FIND_CATEGORIES,

@@ -1,5 +1,5 @@
 
-package com.example.recipebook;
+package com.example.recipebook.interfaces;
 
 import android.database.Cursor;
 

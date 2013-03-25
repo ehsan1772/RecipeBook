@@ -1,4 +1,4 @@
-package com.example.recipebook;
+package com.example.recipebook.interfaces;
 
 /**
  * This interface is implemented by the main activity and the methods are used the first time 

@@ -4,7 +4,7 @@
     android:layout_height="match_parent" >
 
     <fragment
-        android:name="com.example.recipebook.CategoryListFragment"
+        android:name="com.example.recipebook.fragments.CategoryListFragment"
         android:id="@+id/listView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

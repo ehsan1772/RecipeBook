@@ -1,5 +1,8 @@
 
-package com.example.recipebook;
+package com.example.recipebook.listviews;
+
+import com.example.recipebook.activities.RecipeListActivity;
+import com.example.recipebook.interfaces.MyListViewOwner;
 
 import android.content.Context;
 import android.content.Intent;
@@ -63,36 +66,6 @@ public class MyCategoryListView extends ListView implements OnItemClickListener 
 
 
 
-//	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-//
-//		BriefResult temp = (BriefResult) theOwner.getClickedItem(arg2);
-//		ZipcodeRow map = DemographicProducer.getDemographic(theOwner.getCursor(), temp.getRowPosition());
-//		
-//	   	Intent intent = new Intent(context.getApplicationContext(), CityMap.class);
-//	   	
-//	   	intent.putExtra("info", makeExtraData(map));
-//	   			
-//		context.startActivity(intent);
-//		
-//	}
-//
-//	private String[] makeExtraData(ZipcodeRow theRow){
-//		String[] result = new String[10];
-//		
-//		result[0] = theRow.locationData.getCity();
-//		result[1] = theRow.locationData.getState();
-//		result[2] = theRow.zipCodeData.getPopulation();
-//		result[3] = theRow.zipCodeData.getHousing();
-//		result[4] = theRow.zipCodeData.getIncome();
-//		
-//		result[5] = theRow.zipCodeData.getLatitude();
-//		result[6] = theRow.zipCodeData.getLongitude();
-//		result[7] = theRow.locationData.getCounty();
-//		result[8] = theRow.zipCodeData.getLandArea();
-//		result[9] = theRow.zipCodeData.getWaterArea();
-//			
-//		return result;
-//	}
 
 
 }

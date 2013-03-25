@@ -1,6 +1,11 @@
-package com.example.recipebook;
+package com.example.recipebook.listviews;
 
 import java.util.List;
+
+import com.example.recipebook.R;
+import com.example.recipebook.Recipe;
+import com.example.recipebook.R.id;
+import com.example.recipebook.R.layout;
 
 import android.content.Context;
 import android.view.LayoutInflater;

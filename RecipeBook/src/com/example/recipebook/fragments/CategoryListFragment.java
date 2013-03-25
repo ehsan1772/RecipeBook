@@ -1,6 +1,17 @@
-package com.example.recipebook;
+package com.example.recipebook.fragments;
 
 import java.util.List;
+
+import com.example.recipebook.R;
+import com.example.recipebook.Recipe;
+import com.example.recipebook.R.id;
+import com.example.recipebook.R.layout;
+import com.example.recipebook.database.DatabaseTask;
+import com.example.recipebook.database.RunQuery;
+import com.example.recipebook.interfaces.MyListViewOwner;
+import com.example.recipebook.interfaces.QueryListener;
+import com.example.recipebook.listviews.CategoryViewAdapter;
+import com.example.recipebook.listviews.MyCategoryListView;
 
 //import android.app.Fragment;
 import android.database.Cursor;

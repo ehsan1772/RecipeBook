@@ -1,6 +1,16 @@
-package com.example.recipebook;
+package com.example.recipebook.activities;
 
 import java.util.List;
+
+import com.example.recipebook.R;
+import com.example.recipebook.Recipe;
+import com.example.recipebook.R.layout;
+import com.example.recipebook.R.menu;
+import com.example.recipebook.database.MyDatabaseHelper;
+import com.example.recipebook.database.RunQuery;
+import com.example.recipebook.interfaces.MyDatabaseOwner;
+import com.example.recipebook.interfaces.QueryListener;
+import com.example.recipebook.listviews.MyCategoryListView;
 
 import android.os.Bundle;
 import android.app.Activity;

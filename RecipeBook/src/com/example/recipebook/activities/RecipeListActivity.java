@@ -1,6 +1,12 @@
-package com.example.recipebook;
+package com.example.recipebook.activities;
 
 import java.util.List;
+
+import com.example.recipebook.R;
+import com.example.recipebook.Recipe;
+import com.example.recipebook.R.layout;
+import com.example.recipebook.interfaces.MyDatabaseOwner;
+import com.example.recipebook.interfaces.QueryListener;
 
 import android.database.Cursor;
 import android.os.Bundle;
@@ -14,7 +20,7 @@ public class RecipeListActivity extends FragmentActivity implements MyDatabaseOw
 		category = getIntent().getExtras().getString("Category");
 		super.onCreate(arg0);
 		
-		 setContentView(R.layout.activity_recipe);
+		setContentView(R.layout.activity_recipe);
 	}
 	
 	public String getCategory(){

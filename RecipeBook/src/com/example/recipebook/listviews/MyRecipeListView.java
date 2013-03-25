@@ -1,5 +1,10 @@
 
-package com.example.recipebook;
+package com.example.recipebook.listviews;
+
+import com.example.recipebook.Recipe;
+import com.example.recipebook.activities.RecipeDetailActivity;
+import com.example.recipebook.activities.RecipeListActivity;
+import com.example.recipebook.interfaces.MyListViewOwner;
 
 import android.content.Context;
 import android.content.Intent;
@@ -53,10 +58,11 @@ public class MyRecipeListView extends ListView implements OnItemClickListener {
 		 this.theOwner = theOwner;
 	 }
 
-
-
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-
+		Recipe recipe = (Recipe) theOwner.getClickedItem(arg2);
+		Intent intent = new Intent(context, RecipeDetailActivity.class);
+		intent.putExtra("Recipe", recipe);
+		context.startActivity(intent);
 		
 	}
 

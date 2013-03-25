@@ -1,7 +1,10 @@
 
-package com.example.recipebook;
+package com.example.recipebook.database;
 
 import java.util.List;
+
+import com.example.recipebook.Recipe;
+import com.example.recipebook.interfaces.QueryListener;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;

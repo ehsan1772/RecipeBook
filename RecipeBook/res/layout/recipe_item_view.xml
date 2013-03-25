@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
     
-        <com.example.recipebook.MyRecipeListView
+        <com.example.recipebook.listviews.MyRecipeListView
         android:id="@+id/recipelistView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

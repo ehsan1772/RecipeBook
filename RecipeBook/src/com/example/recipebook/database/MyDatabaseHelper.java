@@ -1,10 +1,13 @@
 
-package com.example.recipebook;
+package com.example.recipebook.database;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+
+import com.example.recipebook.interfaces.MyDatabaseOwner;
+
 
 import android.content.Context;
 import android.database.SQLException;
