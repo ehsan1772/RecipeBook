@@ -12,7 +12,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
-public class RecipeListActivity extends FragmentActivity implements MyDatabaseOwner, QueryListener{
+public class RecipeListActivity extends SuperActivity implements MyDatabaseOwner, QueryListener{
 
 	private String category;
 	@Override

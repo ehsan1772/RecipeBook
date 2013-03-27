@@ -10,6 +10,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 /**
  * This class runs all the queries in a background thread and updates the UI after completion
@@ -27,13 +28,19 @@ public class RunQuery extends AsyncTask<String, ProgressBar, Object>{
 	
 	public RunQuery(DatabaseTask task, QueryListener listener)
 	{		
-	//	this.query = query;
-	//	this.db = db;
+
 		this.listener = listener;
 		this.task = task;
 		mySearchManager = new MyQueryManager();
-	//	task = DatabaseTask.FIND_CATEGORIES;
-		//mySearchManager = new MyQueryManager(listener);
+
+	}
+	
+	public RunQuery(DatabaseTask task)
+	{		
+
+		this.task = task;
+		mySearchManager = new MyQueryManager();
+
 	}
 
 	@Override
@@ -44,6 +51,12 @@ public class RunQuery extends AsyncTask<String, ProgressBar, Object>{
 			return mySearchManager.getCategories(db);
 		case FIND_RECIPES:
 			return mySearchManager.getRecipies(params[0], db);
+		case CREATE_NEW:
+			mySearchManager.createNew(params, db);
+			break;
+		case DELETE_RECIPE:
+			mySearchManager.deleteRecipe(params[0], db);
+			break;
 		}
 		return null;
 	}
@@ -59,6 +72,7 @@ public class RunQuery extends AsyncTask<String, ProgressBar, Object>{
 		case FIND_RECIPES:
 			listener.onFindRecipesComplete((List<Recipe>) result);
 			break;
+
 		}
 		super.onPostExecute(result);
 	}

@@ -29,6 +29,10 @@
             android:name=".activities.RecipeDetailActivity">
 
         </activity>
+                <activity
+            android:name=".activities.CreateNewActivity">
+
+        </activity>
     </application>
 
 </manifest>

@@ -83,4 +83,10 @@ public class RecipeListFragment extends Fragment implements QueryListener, MyLis
 		listView.setAdapter(recipeViewAdapter);
 	}
 
+
+	public void deleteClickedItem(int position) {
+		recipeViewAdapter.remove(recipes.get(position));
+		
+	}
+
 }

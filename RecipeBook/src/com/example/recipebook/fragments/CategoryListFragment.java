@@ -14,6 +14,7 @@ import com.example.recipebook.listviews.CategoryViewAdapter;
 import com.example.recipebook.listviews.MyCategoryListView;
 
 //import android.app.Fragment;
+import android.R.color;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -38,6 +39,8 @@ public class CategoryListFragment extends Fragment implements QueryListener, MyL
 		 listView = (MyCategoryListView) root.findViewById(R.id.categorylistView);
 		 listView.setTheOwner(this);
 		 setCategories();
+		 
+		 
 		 
 		 return root;
 	}
@@ -68,6 +71,11 @@ public class CategoryListFragment extends Fragment implements QueryListener, MyL
 	public Cursor getCursor() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public void deleteClickedItem(int position) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

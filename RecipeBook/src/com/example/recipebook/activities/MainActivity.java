@@ -4,8 +4,6 @@ import java.util.List;
 
 import com.example.recipebook.R;
 import com.example.recipebook.Recipe;
-import com.example.recipebook.R.layout;
-import com.example.recipebook.R.menu;
 import com.example.recipebook.database.MyDatabaseHelper;
 import com.example.recipebook.database.RunQuery;
 import com.example.recipebook.interfaces.MyDatabaseOwner;
@@ -13,13 +11,11 @@ import com.example.recipebook.interfaces.QueryListener;
 import com.example.recipebook.listviews.MyCategoryListView;
 
 import android.os.Bundle;
-import android.app.Activity;
 import android.database.Cursor;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
-import android.widget.ListView;
 
-public class MainActivity extends FragmentActivity implements MyDatabaseOwner, QueryListener{
+public class MainActivity extends SuperActivity implements MyDatabaseOwner, QueryListener{
 
 	private MyDatabaseHelper myDatabaseHelper;
 	private MyCategoryListView categoryListView;
@@ -37,11 +33,6 @@ public class MainActivity extends FragmentActivity implements MyDatabaseOwner, Q
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_main, menu);
-        return true;
-    }
 
 	public void datatabaseInitializationStart() {
 		// TODO Auto-generated method stub

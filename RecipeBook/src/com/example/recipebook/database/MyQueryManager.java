@@ -113,5 +113,37 @@ private List<Recipe> cursorToRecipeList(Cursor cursor, String category){
 	return result;
 }
 
+public void createNew(String[] inputs, SQLiteDatabase database){
+	String query = getCreateNewQuery(inputs);
+	database.execSQL(query);
+	
+}
+
+
+public void deleteRecipe(String id, SQLiteDatabase database){
+	String query = getDeleteSQL(id);
+	database.execSQL(query);
+}
+
+private String getDeleteSQL(String id){
+	
+	String sql = "DELETE FROM Recipes WHERE _id = "+ id;
+	return sql;
+	
+}
+private String getCreateNewQuery(String[] inputs) {
+	String query = "INSERT INTO Recipes " +
+"(name, minutes, category, ingredients, instructions) VALUES ('" +
+			inputs[0] + "' , " +
+			inputs[1] + " , " +
+			"(SELECT _id " +
+			"FROM Categories " +
+			"WHERE category " +
+			"= '" + inputs[2] + "') , '" +
+			inputs[3] + "' , '" +
+			inputs[4] + "')";
+	
+	return query;
+}
 
 }

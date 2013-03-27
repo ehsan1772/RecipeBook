@@ -20,5 +20,10 @@ public interface MyListViewOwner {
 	 * @return The cursor
 	 */
 	Cursor getCursor();
+	/**
+	 * Callback method that should be invoke to request an item deletion
+	 * @param position position of the row to be deleted
+	 */
+	void deleteClickedItem(int position);
 
 }
