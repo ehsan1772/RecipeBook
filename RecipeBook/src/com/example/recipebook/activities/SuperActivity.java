@@ -4,6 +4,7 @@ package com.example.recipebook.activities;
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
@@ -17,8 +18,10 @@ public class SuperActivity extends FragmentActivity {
 	@SuppressLint({ "NewApi", "NewApi" })
 	@Override
 	protected void onCreate(Bundle arg0) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
 	    ActionBar actionBar = getActionBar();
 	    actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 		super.onCreate(arg0);
 	}
 
