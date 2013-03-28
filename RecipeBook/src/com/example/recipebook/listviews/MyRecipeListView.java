@@ -2,14 +2,17 @@
 package com.example.recipebook.listviews;
 
 import com.example.recipebook.Recipe;
+import com.example.recipebook.activities.MainActivity;
 import com.example.recipebook.activities.RecipeDetailActivity;
 import com.example.recipebook.activities.RecipeListActivity;
 import com.example.recipebook.database.DatabaseTask;
 import com.example.recipebook.database.RunQuery;
+import com.example.recipebook.dsupporting.MyFragmentManager;
 import com.example.recipebook.interfaces.MyListViewOwner;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.AdapterView;
@@ -29,6 +32,7 @@ public class MyRecipeListView extends ListView implements OnItemClickListener, M
 	private Context context;
 	private MyAlterDialogue alterDialogue;
 	private RunQuery runQuery;
+	private MyFragmentManager myFragmentManager;
 
 	
 	public MyRecipeListView(Context context, AttributeSet attrs, int defStyle) {
@@ -66,10 +70,11 @@ public class MyRecipeListView extends ListView implements OnItemClickListener, M
 	 }
 
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+		
+		myFragmentManager = MainActivity.getMyFragmentManager();
 		Recipe recipe = (Recipe) theOwner.getClickedItem(arg2);
-		Intent intent = new Intent(context, RecipeDetailActivity.class);
-		intent.putExtra("Recipe", recipe);
-		context.startActivity(intent);
+		MyFragmentManager.setRecipe(recipe);
+		myFragmentManager.startRecipeDetail((FragmentActivity) context);
 		
 	}
 	
@@ -91,10 +96,7 @@ public class MyRecipeListView extends ListView implements OnItemClickListener, M
 
 	public void onNoClicked(int position) {
 		// TODO Auto-generated method stub
-		
 	}
-
-
 
 
 }

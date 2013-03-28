@@ -25,5 +25,6 @@ public interface MyListViewOwner {
 	 * @param position position of the row to be deleted
 	 */
 	void deleteClickedItem(int position);
+	
 
 }

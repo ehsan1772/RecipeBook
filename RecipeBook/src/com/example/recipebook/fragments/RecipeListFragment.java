@@ -2,13 +2,16 @@ package com.example.recipebook.fragments;
 
 import java.util.List;
 
+import com.example.recipebook.Device;
 import com.example.recipebook.R;
 import com.example.recipebook.Recipe;
 import com.example.recipebook.R.id;
 import com.example.recipebook.R.layout;
+import com.example.recipebook.activities.MainActivity;
 import com.example.recipebook.activities.RecipeListActivity;
 import com.example.recipebook.database.DatabaseTask;
 import com.example.recipebook.database.RunQuery;
+import com.example.recipebook.dsupporting.MyFragmentManager;
 import com.example.recipebook.interfaces.MyListViewOwner;
 import com.example.recipebook.interfaces.QueryListener;
 import com.example.recipebook.listviews.MyRecipeListView;
@@ -43,18 +46,9 @@ public class RecipeListFragment extends Fragment implements QueryListener, MyLis
 		 return root;
 	}
 	
-	
-	@Override
-	public void onAttach(Activity activity) {
-		activity = (RecipeListActivity) activity;
-		super.onAttach(activity);
-	}
-
-
 	private void setRecipes(){
 		runQuery = new RunQuery(DatabaseTask.FIND_RECIPES, this);
-		String category = ((RecipeListActivity) this.getActivity()).getCategory();
-		runQuery.execute(category);
+		runQuery.execute(MyFragmentManager.getCategory());
 	}
 	
 	public void setCursor(Cursor cursor) {
@@ -86,6 +80,17 @@ public class RecipeListFragment extends Fragment implements QueryListener, MyLis
 
 	public void deleteClickedItem(int position) {
 		recipeViewAdapter.remove(recipes.get(position));
+	}
+
+
+	public void addNewFragment(String category) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public void invokeActivityMethod(Object object) {
+		// TODO Auto-generated method stub
 		
 	}
 

@@ -17,6 +17,7 @@ import com.example.recipebook.activities.RecipeDetailActivity;
 import com.example.recipebook.activities.RecipeListActivity;
 import com.example.recipebook.database.DatabaseTask;
 import com.example.recipebook.database.RunQuery;
+import com.example.recipebook.dsupporting.MyFragmentManager;
 import com.example.recipebook.listviews.MyAlterDialogue;
 import com.example.recipebook.listviews.MyAlterDialogueOwner;
 
@@ -45,7 +46,6 @@ public class RecipeDetailFragment extends Fragment implements MyAlterDialogueOwn
 		 
 		 setRecipes();
 		 setHasOptionsMenu(true);
-		 
 		 setContent();
 		 
 		 return root;
@@ -53,9 +53,7 @@ public class RecipeDetailFragment extends Fragment implements MyAlterDialogueOwn
 	
 	
 	private void setRecipes(){
-
-		recipe = ((RecipeDetailActivity) this.getActivity()).getRecipeDetail();
-		
+			recipe = MyFragmentManager.getRecipe();
 	}
 	
 	private void setContent(){
@@ -98,8 +96,5 @@ public class RecipeDetailFragment extends Fragment implements MyAlterDialogueOwn
 	}
 
 
-	public void onNoClicked(int position) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void onNoClicked(int position) {	}
 }
