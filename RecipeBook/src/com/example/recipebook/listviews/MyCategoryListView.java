@@ -1,18 +1,13 @@
 
 package com.example.recipebook.listviews;
 
-import com.example.recipebook.Device;
 import com.example.recipebook.activities.MainActivity;
-import com.example.recipebook.activities.RecipeListActivity;
 import com.example.recipebook.dsupporting.MyFragmentManager;
 import com.example.recipebook.interfaces.MyListViewOwner;
 
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;

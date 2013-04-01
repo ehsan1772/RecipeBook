@@ -22,6 +22,7 @@ public class MainActivity extends SuperActivity implements MyDatabaseOwner, Quer
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         
         myDatabaseHelper = new MyDatabaseHelper(this, "assignment4.db", null, 1, this);
@@ -41,6 +42,7 @@ public class MainActivity extends SuperActivity implements MyDatabaseOwner, Quer
         
         myFragmentManager.startCategoryList(this);
  
+
     }
 	
 	public static MyFragmentManager getMyFragmentManager(){

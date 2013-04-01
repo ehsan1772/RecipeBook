@@ -10,6 +10,7 @@ import com.example.recipebook.activities.MainActivity;
 import com.example.recipebook.activities.RecipeDetailActivity;
 import com.example.recipebook.database.DatabaseTask;
 import com.example.recipebook.database.RunQuery;
+import com.example.recipebook.dsupporting.MyFragmentManager;
 import com.example.recipebook.interfaces.QueryListener;
 
 import android.R.color;
@@ -17,6 +18,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -84,7 +86,7 @@ public class CreateNewFragment extends Fragment implements QueryListener {
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		//MenuInflater inflator = getActivity().getMenuInflater();
 		inflater.inflate(R.menu.option_menu_create_new, menu);
-		
+		super.onCreateOptionsMenu(menu, inflater);
 	}
 	
 	@Override
@@ -92,9 +94,15 @@ public class CreateNewFragment extends Fragment implements QueryListener {
 	    switch (item.getItemId()) {
         case R.id.save:
         	saveIt();
-    		Intent intent = new Intent(getActivity(), RecipeDetailActivity.class);
-    		intent.putExtra("Recipe", getRecipe());
-    		getActivity().startActivity(intent);
+//    		Intent intent = new Intent(getActivity(), RecipeDetailActivity.class);
+//    		intent.putExtra("Recipe", getRecipe());
+//    		getActivity().startActivity(intent);
+    		
+    		MyFragmentManager myFragmentManager = MainActivity.getMyFragmentManager();
+    		//Recipe recipe = (Recipe) theOwner.getClickedItem(arg2);
+    		MyFragmentManager.setRecipe(getRecipe());
+    		myFragmentManager.startRecipeDetail(getActivity());
+    		
         	return true;
 	    }
 		return super.onOptionsItemSelected(item);

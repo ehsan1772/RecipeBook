@@ -21,21 +21,11 @@ public class MyTabletFragmentManager extends MyFragmentManager {
 	@Override
 	public void startRecipeList(FragmentActivity fragmentActivity) {
 
-        FragmentManager fragmentManager = fragmentActivity.getSupportFragmentManager();
-        
-		if (secondFragment == null){
+        FragmentManager fragmentManager = fragmentActivity.getSupportFragmentManager();        
 		secondFragment = new RecipeListFragment();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.add(R.id.second_layout, secondFragment);
+        FragmentTransaction transaction = fragmentManager.beginTransaction();		        
+        transaction.replace(R.id.second_layout, secondFragment);
         transaction.commit();
-		} else{
-			        
-		secondFragment = new RecipeListFragment();
-        FragmentTransaction transaction2 = fragmentManager.beginTransaction();
-        transaction2.replace(R.id.second_layout, secondFragment);
-        transaction2.commit();
-			
-		}
 		
 	}
 
@@ -53,21 +43,12 @@ public class MyTabletFragmentManager extends MyFragmentManager {
 	@Override
 	public void startRecipeDetail(FragmentActivity fActivity) {
 
-        FragmentManager fragmentManager = fActivity.getSupportFragmentManager();
-        
-		if (thirdFragment == null){
+        FragmentManager fragmentManager = fActivity.getSupportFragmentManager();		   
 		thirdFragment = new RecipeDetailFragment();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.add(R.id.third_layout, thirdFragment);
+        transaction.replace(R.id.third_layout, thirdFragment);
         transaction.commit();
-		} else{
-			        
-		secondFragment = new RecipeListFragment();
-        FragmentTransaction transaction2 = fragmentManager.beginTransaction();
-        transaction2.replace(R.id.third_layout, thirdFragment);
-        transaction2.commit();
-			
-		}
+
 		
 	}
 

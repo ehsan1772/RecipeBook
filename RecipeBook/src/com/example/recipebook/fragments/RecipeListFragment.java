@@ -2,12 +2,8 @@ package com.example.recipebook.fragments;
 
 import java.util.List;
 
-import com.example.recipebook.Device;
 import com.example.recipebook.R;
 import com.example.recipebook.Recipe;
-import com.example.recipebook.R.id;
-import com.example.recipebook.R.layout;
-import com.example.recipebook.activities.MainActivity;
 import com.example.recipebook.activities.RecipeListActivity;
 import com.example.recipebook.database.DatabaseTask;
 import com.example.recipebook.database.RunQuery;
@@ -17,11 +13,9 @@ import com.example.recipebook.interfaces.QueryListener;
 import com.example.recipebook.listviews.MyRecipeListView;
 import com.example.recipebook.listviews.RecipeViewAdapter;
 
-import android.app.Activity;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
