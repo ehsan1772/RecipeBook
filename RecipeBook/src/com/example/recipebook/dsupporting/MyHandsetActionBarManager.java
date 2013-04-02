@@ -6,6 +6,7 @@ import com.example.recipebook.activities.MainActivity;
 import com.example.recipebook.activities.RecipeDetailActivity;
 import com.example.recipebook.activities.RecipeListActivity;
 
+import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
@@ -23,6 +24,7 @@ public class MyHandsetActionBarManager extends MyActionBarManager {
 	this.isHoneyComb = isHoneyComb;	
 	}
 
+	@SuppressLint({ "NewApi", "NewApi" })
 	@Override
 	public boolean onCreateOptionsMenu(FragmentActivity activity, Menu menu) {
 		MenuInflater inflator = activity.getMenuInflater();
@@ -46,7 +48,7 @@ public class MyHandsetActionBarManager extends MyActionBarManager {
 	public boolean onOptionsItemSelected(FragmentActivity activity, MenuItem item) {
 	    switch (item.getItemId()) {
         case android.R.id.home:
- //            app icon in action bar clicked; go home
+
         	if (!(activity instanceof MainActivity))
         	{
             Intent intent = getIntent(activity);
@@ -56,11 +58,11 @@ public class MyHandsetActionBarManager extends MyActionBarManager {
             return true;
         case R.id.create_new:
         	Intent intent = new Intent(activity, CreateNewActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
             activity.startActivity(intent);
             return true;
         default :
-        	return true;
+        	return false;
 
     }
 	    

@@ -69,8 +69,8 @@ public class RecipeDetailFragment extends Fragment implements MyAlterDialogueOwn
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		// TODO Auto-generated method stub
-		super.onCreateOptionsMenu(menu, inflater);
 	    inflater.inflate(R.menu.recipe_detai_additional, menu);
+		super.onCreateOptionsMenu(menu, inflater);
 	}
 
 	@Override

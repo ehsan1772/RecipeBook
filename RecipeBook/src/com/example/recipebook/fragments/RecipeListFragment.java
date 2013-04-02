@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.example.recipebook.R;
 import com.example.recipebook.Recipe;
-import com.example.recipebook.activities.RecipeListActivity;
 import com.example.recipebook.database.DatabaseTask;
 import com.example.recipebook.database.RunQuery;
 import com.example.recipebook.dsupporting.MyFragmentManager;
@@ -13,28 +12,37 @@ import com.example.recipebook.interfaces.QueryListener;
 import com.example.recipebook.listviews.MyRecipeListView;
 import com.example.recipebook.listviews.RecipeViewAdapter;
 
+import android.R.color;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class RecipeListFragment extends Fragment implements QueryListener, MyListViewOwner{
 	
 	private View root;
 	private MyRecipeListView listView;
 	private RunQuery runQuery; 
-	private RecipeListActivity activity;
 	private List<Recipe> recipes;
 	private RecipeViewAdapter recipeViewAdapter;
+	private TextView categoryTextView;
+	private String category;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		 root = inflater.inflate(R.layout.recipe_item_view, container, false);
+		 categoryTextView  = (TextView) root.findViewById(R.id.recipe_list_title);
 		 listView = (MyRecipeListView) root.findViewById(R.id.recipelistView);
 		 listView.setTheOwner(this);
+		 category = MyFragmentManager.getCategory();
+		 categoryTextView.setText(category);
+		 categoryTextView.setBackgroundColor(Color.argb(100, 100, 100, 100));
 		 setRecipes();
 		 
 		 return root;
@@ -42,7 +50,7 @@ public class RecipeListFragment extends Fragment implements QueryListener, MyLis
 	
 	private void setRecipes(){
 		runQuery = new RunQuery(DatabaseTask.FIND_RECIPES, this);
-		runQuery.execute(MyFragmentManager.getCategory());
+		runQuery.execute(category);
 	}
 	
 	public void setCursor(Cursor cursor) {
@@ -66,9 +74,13 @@ public class RecipeListFragment extends Fragment implements QueryListener, MyLis
 
 
 	public void onFindRecipesComplete(List<Recipe> recipes) {
+		if (recipes == null || recipes.isEmpty()){
+			Toast.makeText(getActivity(), "There is no recipe in this category", Toast.LENGTH_LONG).show();
+		}else{
 		this.recipes = recipes;
 		recipeViewAdapter = new RecipeViewAdapter(getActivity(), R.layout.category_view, recipes);
 		listView.setAdapter(recipeViewAdapter);
+		}
 	}
 
 

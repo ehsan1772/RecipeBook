@@ -4,10 +4,22 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
+    <TextView
+        android:id="@+id/categories"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/light_gray"
+        android:gravity="center"
+        android:text="Categories"
+        android:textStyle="bold" />
+
     <com.example.recipebook.listviews.MyCategoryListView
         android:id="@+id/categorylistView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/categories"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

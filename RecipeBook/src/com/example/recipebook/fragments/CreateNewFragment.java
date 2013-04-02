@@ -84,7 +84,6 @@ public class CreateNewFragment extends Fragment implements QueryListener {
 
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-		//MenuInflater inflator = getActivity().getMenuInflater();
 		inflater.inflate(R.menu.option_menu_create_new, menu);
 		super.onCreateOptionsMenu(menu, inflater);
 	}
@@ -94,12 +93,8 @@ public class CreateNewFragment extends Fragment implements QueryListener {
 	    switch (item.getItemId()) {
         case R.id.save:
         	saveIt();
-//    		Intent intent = new Intent(getActivity(), RecipeDetailActivity.class);
-//    		intent.putExtra("Recipe", getRecipe());
-//    		getActivity().startActivity(intent);
-    		
+
     		MyFragmentManager myFragmentManager = MainActivity.getMyFragmentManager();
-    		//Recipe recipe = (Recipe) theOwner.getClickedItem(arg2);
     		MyFragmentManager.setRecipe(getRecipe());
     		myFragmentManager.startRecipeDetail(getActivity());
     		

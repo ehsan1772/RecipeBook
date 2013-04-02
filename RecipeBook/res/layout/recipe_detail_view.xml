@@ -2,6 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
     android:orientation="vertical" >
 
     <ScrollView
@@ -18,19 +20,34 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="20dp"
                 android:text="Name"
                 android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Category : "
+                android:textSize="14dp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/recipe_category"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="2dp"
                 android:text="Category : "
                 android:textSize="14dp"
                 android:textStyle="italic" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Time : (Minutes)"
+                android:textSize="14dp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/recipe_time"
@@ -42,19 +59,35 @@
                 android:textStyle="italic" />
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Ingredients : "
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
+            <TextView
                 android:id="@+id/recipe_ingredients"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="0dp"
+                android:layout_marginTop="2dp"
                 android:text="Ingredients : "
                 android:textSize="14dp"
                 android:textStyle="italic" />
 
             <TextView
-                android:id="@+id/recipe_instructions"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
+                android:text="Instructionss : "
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/recipe_instructions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
                 android:text="Instructionss : "
                 android:textSize="14dp" />
         </LinearLayout>
