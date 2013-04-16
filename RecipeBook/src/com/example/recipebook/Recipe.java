@@ -2,6 +2,11 @@ package com.example.recipebook;
 
 import java.io.Serializable;
 
+/**
+ * This class will be a data structure that will represent a recipe
+ * @author Ehsan Barekati
+ *
+ */
 public class Recipe implements Serializable {
 	
 	private String id;

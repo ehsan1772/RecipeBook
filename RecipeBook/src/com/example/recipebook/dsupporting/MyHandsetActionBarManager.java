@@ -10,12 +10,17 @@ import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Build;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+/**
+ * This class is a concrete subclass of the MyActionBarManager and implements all the methods for a handset device
+ * @author Ehsan Barekati
+ *
+ */
 public class MyHandsetActionBarManager extends MyActionBarManager {
 
 	private boolean isHoneyComb;
@@ -24,11 +29,24 @@ public class MyHandsetActionBarManager extends MyActionBarManager {
 	this.isHoneyComb = isHoneyComb;	
 	}
 
+	/**
+	 * Adds the option_menu (from the menu folder) contents to the option menu menu
+	 * if the device is running on HonneyComb and above. the menu will be added as an option menu otherwise it will be the old option menu
+	 * in the former case, the method activates the "up" navigation on the action menu.
+	 */
 	@SuppressLint({ "NewApi", "NewApi" })
 	@Override
 	public boolean onCreateOptionsMenu(FragmentActivity activity, Menu menu) {
 		MenuInflater inflator = activity.getMenuInflater();
-		inflator.inflate(R.menu.option_menu, menu);
+			
+		if (activity instanceof CreateNewActivity)
+			inflator.inflate(R.menu.option_menu_create_new, menu);
+		if (activity instanceof MainActivity)
+			inflator.inflate(R.menu.opteion_menu_main, menu);
+		if (activity instanceof RecipeDetailActivity)
+			inflator.inflate(R.menu.opteion_menu_detail, menu);
+		if (activity instanceof RecipeListActivity)
+			inflator.inflate(R.menu.opteion_menu_recipe_list, menu);
 
         if (isHoneyComb) {
 	    ActionBar actionBar = activity.getActionBar();
@@ -38,17 +56,14 @@ public class MyHandsetActionBarManager extends MyActionBarManager {
 		return true;
 	}
 
-	@Override
-	public void initialize(Activity activity) {
-		// TODO Auto-generated method stub
-		
-	}
 
+	/**
+	 * Handles the clicks on the option menu items 
+	 */
 	@Override
 	public boolean onOptionsItemSelected(FragmentActivity activity, MenuItem item) {
 	    switch (item.getItemId()) {
         case android.R.id.home:
-
         	if (!(activity instanceof MainActivity))
         	{
             Intent intent = getIntent(activity);
@@ -68,16 +83,20 @@ public class MyHandsetActionBarManager extends MyActionBarManager {
 	    
 	}
 
+	/**
+	 * returns an intent that has the correct activity to navigate to when pushing the "up" button
+	 * @param activity
+	 * @return
+	 */
 	private Intent getIntent(FragmentActivity activity){
 		Intent intent = null;
 		if (activity instanceof RecipeListActivity)
 			intent = new Intent(activity,  MainActivity.class);
-			//return intent;
 		if (activity instanceof RecipeDetailActivity)
-		{
 			intent = new Intent(activity,  RecipeListActivity.class);
-			intent.putExtra("Category", ((RecipeDetailActivity)activity).getCategory());
-		}
+		if (activity instanceof CreateNewActivity)
+			intent = new Intent(activity,  RecipeListActivity.class);
+
 		return intent;
 	}
 

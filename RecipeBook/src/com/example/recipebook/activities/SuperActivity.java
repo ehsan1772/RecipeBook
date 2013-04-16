@@ -1,23 +1,25 @@
 package com.example.recipebook.activities;
 
-//import android.R;
+
 import android.annotation.SuppressLint;
-import android.app.ActionBar;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
-import com.example.recipebook.R;
 import com.example.recipebook.dsupporting.MyActionBarManager;
 import com.example.recipebook.dsupporting.MyHandsetActionBarManager;
 import com.example.recipebook.dsupporting.MyTabletActionBarManager;
 
+/**
+ * This is the super class for all the activities in this application.
+ * This class recognizes what kind of device the app is running on and creates an instance of the abstract class MyActionBarManager accordingly
+ * @author Ehsan Barekati
+ *
+ */
 public class SuperActivity extends FragmentActivity {
 
-	MyActionBarManager myActionBarManager;
+	private MyActionBarManager myActionBarManager;
 	
 	@SuppressLint({ "NewApi", "NewApi" })
 	@Override
@@ -25,6 +27,11 @@ public class SuperActivity extends FragmentActivity {
 		super.onCreate(arg0);
 	}
 
+	/**
+	 * 
+	 * this callback method gets called to create the option menu.
+	 * It will call the constructor of the right subclass of MyActionBarManager and calls the .oncreateoptionmenue on that instance.
+	 */
 	@SuppressLint({ "NewApi", "NewApi" })
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -39,7 +46,11 @@ public class SuperActivity extends FragmentActivity {
 
 		return myActionBarManager.onCreateOptionsMenu(this,menu);
 	}
-
+	
+	
+/**
+ * This method just passes the selected item to the instance of MyActionManager
+ */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		

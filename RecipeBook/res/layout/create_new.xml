@@ -35,7 +35,6 @@
 
                     <requestFocus />
                 </EditText>
-"
             </LinearLayout>
 
             <LinearLayout
@@ -56,11 +55,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:ems="10" >
+                    android:ems="10"
+                    android:inputType="number" >
 
                     <requestFocus />
                 </EditText>
-"
             </LinearLayout>
 
             <LinearLayout
@@ -85,7 +84,6 @@
 
                     <requestFocus />
                 </Spinner>
-"
             </LinearLayout>
 
             <LinearLayout
@@ -111,7 +109,6 @@
                     android:gravity="top"
                     android:inputType="textMultiLine"
                     android:lines="5" />
-"
             </LinearLayout>
 
             <LinearLayout
@@ -127,7 +124,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
                     android:text="Instructions: " />
-"
 
                 <EditText
                     android:id="@+id/instructions"
@@ -138,8 +134,14 @@
                     android:gravity="top"
                     android:inputType="textMultiLine"
                     android:lines="10" />
-"
             </LinearLayout>
+
+            <Button
+                android:id="@+id/save_button"
+                android:layout_width="150dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:text="Save" />
         </LinearLayout>
     </ScrollView>
 

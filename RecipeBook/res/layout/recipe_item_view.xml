@@ -12,7 +12,7 @@
         android:layout_alignParentTop="true"
         android:gravity="center"
         android:textStyle="bold"
-        android:text="TextView" />
+         />
 
     <com.example.recipebook.listviews.MyRecipeListView
         android:id="@+id/recipelistView"

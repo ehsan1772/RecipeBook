@@ -7,23 +7,25 @@
 
     <FrameLayout
         android:id="@+id/first_layout"
-        android:layout_weight=".33" 
         android:layout_width="0dp"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        android:layout_weight=".35" >
+
+        <fragment
+            android:id="@+id/listView1"
+            android:name="com.example.recipebook.fragments.CategoryListFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true" />
     </FrameLayout>
 
     <FrameLayout
         android:id="@+id/second_layout"
-        android:layout_weight=".33" 
         android:layout_width="0dp"
-        android:layout_height="match_parent" >
-    </FrameLayout>
+        android:layout_height="match_parent"
+        android:layout_weight=".65" >
 
-    <FrameLayout
-        android:id="@+id/third_layout"
-        android:layout_weight=".33" 
-        android:layout_width="0dp"
-        android:layout_height="match_parent" >
+
     </FrameLayout>
 
 </LinearLayout>
